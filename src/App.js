@@ -13,10 +13,7 @@ function App() {
       <div>
         <Navbar />
         <ItemListContainer />
-
-
       </div>
-
     </>
   );
 }
