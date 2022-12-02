@@ -1,8 +1,11 @@
 import React from "react";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-export default function CartWidget() {
-  return <div>
-    <AddShoppingCartIcon/>
-  </div>;
+export default function CartWidget({ cant }) {
+  return (
+    <>
+    <ShoppingCartIcon/>
+    {cant}
+    </>
+    );
 }
