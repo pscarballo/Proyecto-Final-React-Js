@@ -12,7 +12,6 @@ export default function ItemDetailContainer({ greeting }) {
 
   useEffect(() => {
     const db = getFirestore();
-
     let docSinNorm = doc(db, 'productos', iditem);
 
     getDoc(docSinNorm).then((item) => {

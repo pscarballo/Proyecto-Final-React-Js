@@ -23,8 +23,9 @@ export default function App() {
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:idcategory" element={<ItemListContainer />} />
           <Route path="/item/:iditem" element={<ItemDetailContainer />} />
-          <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          
         </Routes>
 
         {/* <Footer /> */}

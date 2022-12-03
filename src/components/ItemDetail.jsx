@@ -18,13 +18,13 @@ export default function ItemDetail({ producto }) {
     <div style={{ border: "2px solid violet", margin: "10px",display: "inline-block" }}>
       {producto.id ? (
         <>
-          <img style={{ height: "200px" }} src={producto.imgUrl} alt={producto.name} />
+          <img style={{ height: "400px" }} src={producto.imgUrl} alt={producto.name} />
           <p>ID: {producto.id}</p>
-          <p>NOMBRE: {producto.name}</p>
+          <h3>NOMBRE: {producto.name}</h3>
           <p>CATEGORIA: {producto.category}</p>
           <p>PRECIO: ${producto.precio}</p>
           <p>STOCK: {producto.stock}</p>
-          <p style={{ width: "300px", height: "210px" }}>DESCRIPCION: {producto.descripcion}</p>
+          <p style={{ width: "400px", height: "210px" }}>DESCRIPCION: {producto.descripcion}</p>
           {/* IMG:{producto.imgUrl}
           <br />
           ID: {producto.id}
