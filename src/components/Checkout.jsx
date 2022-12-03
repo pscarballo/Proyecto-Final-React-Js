@@ -1,7 +1,8 @@
+//@ts-check
 
-
-import React, { useContext, useState } from 'react'
-import { contextoGeneral } from './ContextContainer'
+import React, { useContext, useState } from 'react';
+import { contextoGeneral } from './ContextContainer';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 
 export default function Checkout() {
@@ -16,7 +17,12 @@ export default function Checkout() {
             carrito,
             total: totalAPagar,
         };
-        console.log('quiere comprar', pedido)
+        // console.log('quiere comprar', pedido)
+        const db = getFirestore();
+        const pedidos = collection(db, 'pedidos');
+        addDoc(pedidos, pedido).then((pedidoInsertado) => {
+            console.log(pedidoInsertado.id);
+        });
     }
     return (
         <div>

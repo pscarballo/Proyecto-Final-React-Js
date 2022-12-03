@@ -15,10 +15,17 @@ export default function ItemDetail({ producto }) {
     addItem(producto, cant);
   }
   return (
-    <div style={{ border: "2px solid violet", margin: "10px" }}>
+    <div style={{ border: "2px solid violet", margin: "10px",display: "inline-block" }}>
       {producto.id ? (
         <>
-          IMG:{producto.imgUrl}
+          <img style={{ height: "200px" }} src={producto.imgUrl} alt={producto.name} />
+          <p>ID: {producto.id}</p>
+          <p>NOMBRE: {producto.name}</p>
+          <p>CATEGORIA: {producto.category}</p>
+          <p>PRECIO: ${producto.precio}</p>
+          <p>STOCK: {producto.stock}</p>
+          <p style={{ width: "300px", height: "210px" }}>DESCRIPCION: {producto.descripcion}</p>
+          {/* IMG:{producto.imgUrl}
           <br />
           ID: {producto.id}
           <br />
@@ -29,9 +36,9 @@ export default function ItemDetail({ producto }) {
           PRECIO: {producto.precio}
           <br />
           STOCK: {producto.stock}
-          <br />
-        
-          <ItemCount ini={1} max={producto.stock} onAdd={onAdd} /> 
+          <br /> */}
+
+          <ItemCount ini={1} max={producto.stock} onAdd={onAdd} />
         </>
       ) : (
         <>Cargando...</>
