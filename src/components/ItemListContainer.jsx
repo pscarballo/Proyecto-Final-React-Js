@@ -24,7 +24,7 @@ export default function ItemListContainer({ greeting }) {
 
     getDocs(productos).then((res) => {
       const arrayNorm = res.docs.map((element) => {
-        return { id: element.id, name: element.data().name, category: element.data().category, precio: element.data().precio, stock: element.data().stock };
+        return { img: element.data().imgUrl, id: element.id, name: element.data().name, category: element.data().category, precio: element.data().precio, stock: element.data().stock };
       });
       
       setProductos(arrayNorm);

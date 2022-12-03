@@ -20,6 +20,7 @@ const pages = [
   { label: "Comics", link: "/category/comics" },
   { label: "Libros", link: "/category/libros" },
   { label: "Manga", link: "/category/manga" },
+  { label: "Checkout", link: "/checkout" },
   ];
 
 
