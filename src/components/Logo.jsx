@@ -4,7 +4,7 @@ import logo from '../images/logo.png'
 
 export default function Logo() {
     return (
-        <a href='#'>
+        <a href='/'>
             <img className='Logo' src={logo}></img>
         </a>
     )

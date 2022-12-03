@@ -24,9 +24,14 @@ export default function ContextContainer({ children }) {
   function removeItem(id) {
     setCarrito(carrito.filter((product) => product.id !== id));
   }
+  console.log(carrito)
   function clear() {
     setCarrito([]);
   }
 
-  return <contextoGeneral.Provider value={{ carrito, addItem, removeItem, clear }}>{children}</contextoGeneral.Provider>;
+  return (
+   <contextoGeneral.Provider value={{ carrito, addItem, removeItem, clear }}>
+     {children}
+    </contextoGeneral.Provider>
+  );
 }

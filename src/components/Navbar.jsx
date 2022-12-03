@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Link } from "react-router-dom";
 import CartWidget from './CartWidget';
+import { contextoGeneral } from '../components/ContextContainer';
 import Logo from './Logo';
 
 const pages = [
@@ -23,6 +24,13 @@ const pages = [
 
 
 export default function Navbar() {
+  const { carrito } = React.useContext(contextoGeneral);
+  const [cant, setCant] = React.useState(0);
+  React.useEffect(() => {
+  
+    setCant(carrito.reduce((acc, item) => acc + item.quantity, 0));
+  }, [carrito]);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -135,7 +143,7 @@ export default function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-           <CartWidget/>
+           <CartWidget cant={cant}/>
           </Box>
         </Toolbar>
       </Container>

@@ -9,7 +9,9 @@ import { contextoGeneral } from '../components/ContextContainer';
 //   }
 export default function ItemDetail({ producto }) {
   const { carrito, addItem } = useContext(contextoGeneral);
+  console.log(carrito);
   function onAdd(cant) {
+    // alert("quiere agregar " + cant + " de este item: " + producto.name);
     addItem(producto, cant);
   }
   return (
