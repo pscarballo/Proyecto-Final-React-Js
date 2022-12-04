@@ -10,6 +10,7 @@ export default function Checkout() {
     const [nombre, setNombre] = useState('');
     const [tel, setTel] = useState('');
     const [email, setEmail] = useState('');
+
     function handleClickBuyButton() {
         // alert(nombre + "" + tel + "" + email + ' quiere comprar ' + JSON.stringify(carrito) + ' total a pagar: ' + totalAPagar);
         const pedido = {
@@ -26,12 +27,14 @@ export default function Checkout() {
     }
     return (
         <div>
+            <h3>Ingrese Sus datos para finalizar la compra</h3>
             <div>{carrito.map(item => <p>{item.name + ' ' + item.precio + ' ' + 'Cant:' + item.quantity}</p>)}</div>
             <div>TOTAL A PAGAR: {totalAPagar}</div>
             <div>
-                <input placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)} />
-                <input placeholder='Tel' value={tel} onChange={(e) => setTel(e.target.value)} />
+                <input placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)} /> <br />
+                <input placeholder='Tel' value={tel} onChange={(e) => setTel(e.target.value)} /> <br />
                 <input placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br />
                 <br />
                 <input type="button" onClick={handleClickBuyButton} value="PAGAR" />
             </div>
