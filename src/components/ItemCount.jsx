@@ -5,7 +5,7 @@ import { contextoGeneral } from './ContextContainer';
 import { Link } from 'react-router-dom';
 import Item from './Item';
 
-export default function ItemCount({ ini, max, onAdd, Cant }) {
+export default function ItemCount({ ini, max  }) {
   const [count, setCount] = useState(ini);
   const [removeButton, setRemoveButton] = useState(false);
   const { carrito, addItem } = useContext(contextoGeneral);
@@ -23,14 +23,14 @@ export default function ItemCount({ ini, max, onAdd, Cant }) {
     }
   }
 
-  // function onAdd() {
-  //   alert(count + "a" + JSON.stringify(producto))
-  //   addItem(Item, count);
-  //   setRemoveButton(true);
-  // }
-  // useEffect(() => {
-  //   console.log(carrito);
-  // }, [carrito]);
+   function onAdd() {
+    //  alert(count + "a" + JSON.stringify(producto))
+     addItem(Item, count);
+     setRemoveButton(true);
+   }
+   useEffect(() => {
+     console.log(carrito);
+   }, [carrito]);
 
   return (
     <div>
@@ -44,7 +44,7 @@ export default function ItemCount({ ini, max, onAdd, Cant }) {
           <Link to="/"> Continuar Comprando</Link>
         </>
       ) : (
-        <button onClick={() => onAdd(count)}>AGREGAR</button>
+        <button style={{ cursor: "pointer" }} onClick={onAdd}>AGREGAR</button>
       )}
     </div>
   );

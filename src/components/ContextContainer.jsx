@@ -1,7 +1,6 @@
 import React, { useState, createContext } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import Item from './Item';
 
 export const contextoGeneral = createContext();
 
@@ -16,20 +15,19 @@ export default function ContextContainer({ children }) {
         return pos;
     }
 
-    function addItem(carrito, quantity) {
-        console.log(Item,quantity);
-         const pos = posInCart(Item.id);
-         if (pos == -1) {
-             setCarrito([...carrito, { ...Item, quantity }]);
-         } else {
-             const carritoAux = [...carrito];
-             carritoAux[pos] = { ...carritoAux[pos], quantity: carritoAux[pos].quantity + quantity };
-             setCarrito(carritoAux);
-         }
+    function addItem(item, quantity) {
+        const pos = posInCart(item.id);
+        if (pos == -1) {
+            setCarrito([...carrito, { ...item, quantity }]);
+        } else {
+            const carritoAux = [...carrito];
+            carritoAux[pos] = { ...carritoAux[pos], quantity: carritoAux[pos].quantity + quantity };
+            setCarrito(carritoAux);
+        }
     }
-    // // // // // useEffect(() => {
-    // // // // //     console.log(carrito);
-    // // // // //   }, [carrito]);
+    useEffect(() => {
+        console.log(carrito);
+      }, [carrito]);
 
     function removeItem(id) {
         setCarrito(carrito.filter((product) => product.id !== id));

@@ -8,15 +8,15 @@ import { contextoGeneral } from '../components/ContextContainer';
 // // // // //   //    alert("quiere agregar " + x + " de este item: " + producto.name);
 // // // // //   //  }
 export default function ItemDetail({ producto }) {
-  const { carrito, addItem } = useContext(contextoGeneral);
-  // console.log(carrito);
-  function onAdd(cant) {
-     alert("quiere agregar " + cant + " de este item: " + producto.name);
-    addItem(producto, cant);
-  }
-  useEffect(() => {
-    console.log(carrito);
-  }, [carrito]);
+  // // // // // const { carrito, addItem } = useContext(contextoGeneral);
+  // // // // // // console.log(carrito);
+  // // // // // function onAdd(cant) {
+  // // // // //    alert("quiere agregar " + cant + " de este item: " + producto.name);
+  // // // // //   addItem(producto, cant);
+  // // // // // }
+  // // // // // useEffect(() => {
+  // // // // //   console.log(carrito);
+  // // // // // }, [carrito]);
   return (
     <div style={{ border: "2px solid violet", margin: "10px", display: "inline-block" }}>
       {producto.id ? (
@@ -41,7 +41,7 @@ export default function ItemDetail({ producto }) {
           STOCK: {producto.stock}
           <br /> */}
 
-          <ItemCount ini={1} max={producto.stock} onAdd={onAdd} Cant />
+           <ItemCount ini={1} max={producto.stock} /*onAdd={onAdd}*/  /> 
         </>
       ) : (
         <>Cargando...</>
