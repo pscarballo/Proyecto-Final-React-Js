@@ -1,12 +1,23 @@
-import React, { useState, useContext } from 'react';
+//@ts-check
+import React, { useState, useEffect, useContext } from 'react';
+// import { useEffect } from 'react';
+import { contextoGeneral } from './ContextContainer';
+import { Link } from 'react-router-dom';
+import Item from './Item';
 
-export default function ItemCount({ ini, max, onAdd }) {
+export default function ItemCount({ ini, max, producto }) {
   const [count, setCount] = useState(ini);
+  const [removeButton, setRemoveButton] = useState(false);
+  const { carrito, addItem } = useContext(contextoGeneral);
+
+
+
   function restar() {
     if (count >= 2) {
       setCount(count - 1);
     }
   }
+
 
   function sumar() {
     if (count < max) {
@@ -14,13 +25,29 @@ export default function ItemCount({ ini, max, onAdd }) {
     }
   }
 
+   function onAdd() {
+    //  alert(count + "a" + JSON.stringify(producto))
+     addItem(Item, count);
+     setRemoveButton(true);
+   }
+   useEffect(() => {
+     
+   }, [carrito]);
+
   return (
     <div>
-      <button onClick={restar}>-</button>
+      <button style={{ cursor: "pointer" }} onClick={restar}>-</button>
       {count}
-      <button onClick={sumar}>+</button>
+      <button style={{ cursor: "pointer" }} onClick={sumar}>+</button>
       <br />
-      <button onClick={() => onAdd(count)}>AGREGAR</button>
+      {removeButton ? (
+        <>
+          Producto Agregado Correctamente
+          <Link to="/"> Continuar Comprando</Link>
+        </>
+      ) : (
+        <button style={{ cursor: "pointer" }} onClick={onAdd}>AGREGAR</button>
+      )}
     </div>
   );
 }
