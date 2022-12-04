@@ -1,9 +1,15 @@
 import React from 'react'
+import { useContext } from 'react';
+import { contextoGeneral } from '../components/ContextContainer';
 
 export default function Cart() {
-  return (
-    <div>Cart</div>
-  )
+    const { carrito, cant, totalAPagar, totalProductos } = useContext(contextoGeneral);
+
+    return (
+        <div>
+            tiene {totalProductos} pagar {totalAPagar};
+        </div>
+    )
 }
 
 

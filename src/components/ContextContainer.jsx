@@ -9,6 +9,7 @@ export default function ContextContainer({ children }) {
     // const {carrito} = useContext (contextoGeneral);
 
     const [totalAPagar, setTotalAPagar] = useState(0);
+    const [totalProductos, setTotalAProductos] = useState(0);
 
     function posInCart(id) {
         const pos = carrito.findIndex((item) => item.id == id);
@@ -16,6 +17,9 @@ export default function ContextContainer({ children }) {
     }
 
     function addItem(item, quantity) {
+
+        console.log("agregando", item, quantity);
+
         const pos = posInCart(item.id);
         if (pos == -1) {
             setCarrito([...carrito, { ...item, quantity }]);
@@ -25,9 +29,13 @@ export default function ContextContainer({ children }) {
             setCarrito(carritoAux);
         }
     }
-    useEffect(() => {
+    // useEffect(() => {
+    //      const total = carrito.reduce((acc, item) => acc + item.quantity * item.precio, 0)
+    //      setTotalAPagar(total)
+
+    //      console.log(total);
         
-      }, [carrito]);
+    //   }, [carrito]);
 
     function removeItem(id) {
         setCarrito(carrito.filter((product) => product.id !== id));
@@ -39,16 +47,17 @@ export default function ContextContainer({ children }) {
     }
 
     useEffect(() => {
-        const total = carrito.reduce((acc, item) => acc + item.quantity * item.precio, 0)
-        setTotalAPagar(total)
-        
+        setTotalAPagar(carrito.reduce((acc, item) => acc + item.quantity * item.precio, 0));
+        setTotalAProductos(carrito.reduce((acc, item) => acc + item.quantity, 0));
+        // setTotalAPagar(total)
+        // console.log(total);
         
     }, [carrito]);
 
 
 
     return (
-        <contextoGeneral.Provider value={{ carrito, addItem, removeItem, clear, totalAPagar }}>
+        <contextoGeneral.Provider value={{ carrito, addItem, removeItem, clear, totalAPagar, totalProductos }}>
             {children}
         </contextoGeneral.Provider>
     );

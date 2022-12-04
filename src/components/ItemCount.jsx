@@ -25,14 +25,14 @@ export default function ItemCount({ ini, max, producto }) {
     }
   }
 
-   function onAdd() {
+  function onAdd() {
     //  alert(count + "a" + JSON.stringify(producto))
-     addItem(Item, count);
-     setRemoveButton(true);
-   }
-   useEffect(() => {
-     
-   }, [carrito]);
+    addItem(producto, count);
+    setRemoveButton(true);
+  }
+  useEffect(() => {
+
+  }, [carrito]);
 
   return (
     <div>
