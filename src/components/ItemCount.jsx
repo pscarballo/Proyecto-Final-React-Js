@@ -42,8 +42,9 @@ export default function ItemCount({ ini, max, producto }) {
       <br />
       {removeButton ? (
         <>
-          Producto Agregado Correctamente
-          <Link to="/"> Continuar Comprando</Link>
+          Producto Agregado Correctamente <br />
+          <Link to="/"> CONTINUAR COMPRANDO</Link><br />
+          <Link to="/checkout"> FINALIZAR COMPRA</Link>
         </>
       ) : (
         <button style={{ cursor: "pointer" }} onClick={onAdd}>AGREGAR</button>
