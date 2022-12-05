@@ -7,7 +7,6 @@ export default function Cart() {
     const { carrito, totalAPagar, totalProductos, removeItem } = useContext(contextoGeneral);
 
     return (
-        /*{item.name + " " + item.quantity} */
         <>
             {carrito.map((item) => (
 
@@ -17,9 +16,6 @@ export default function Cart() {
                     <p>NOMBRE: {item.name}</p>
                     <p>CATEGORIA: {item.category}</p>
                     <p>PRECIO: ${item.precio}</p>
-                    
-
-
                     <br />
 
                     <span style={{ cursor: "pointer" }} onClick={() => removeItem(item.id)}>ELIMINAR 🗑️</span>
