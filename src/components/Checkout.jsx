@@ -3,13 +3,15 @@
 import React, { useContext, useState } from 'react';
 import { contextoGeneral } from './ContextContainer';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 
 export default function Checkout() {
-    const { carrito, totalAPagar } = useContext(contextoGeneral);
+    const { carrito, totalAPagar, clear } = useContext(contextoGeneral);
     const [nombre, setNombre] = useState('');
     const [tel, setTel] = useState('');
     const [email, setEmail] = useState('');
+    const [PedidoInsertadoId , setPedidoInsertadoId] = useState('');
 
     function handleClickBuyButton() {
         // alert(nombre + "" + tel + "" + email + ' quiere comprar ' + JSON.stringify(carrito) + ' total a pagar: ' + totalAPagar);
@@ -22,23 +24,31 @@ export default function Checkout() {
         const db = getFirestore();
         const pedidos = collection(db, 'pedidos');
         addDoc(pedidos, pedido).then((pedidoInsertado) => {
-            console.log(pedidoInsertado.id);
+            // console.log(pedidoInsertado.id);
+            setPedidoInsertadoId(pedidoInsertado.id);
+            
+            clear()
         });
     }
     return (
-        <div>
-            <h3>Ingrese Sus datos para finalizar la compra</h3>
-            <div>{carrito.map(item => <p>{item.name + ' ' + item.precio + ' ' + 'Cant:' + item.quantity}</p>)}</div>
-            <div>TOTAL A PAGAR: {totalAPagar}</div>
+        <>
+            {PedidoInsertadoId ? ('Gracias por elegirnos. Tu id de compra es: ' + PedidoInsertadoId) :( 
             <div>
-                <input placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)} /> <br />
-                <input placeholder='Tel' value={tel} onChange={(e) => setTel(e.target.value)} /> <br />
-                <input placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                <br />
-                <br />
-                <input type="button" onClick={handleClickBuyButton} value="PAGAR" />
+                <h3>Ingrese Sus datos para finalizar la compra</h3>
+                <p>Sus productos son:</p>
+                <div>{carrito.map(item => <p>{item.name + ' $' + item.precio + ' ' + 'Cant:' + item.quantity}</p>)}</div>
+                <div>TOTAL A PAGAR: ${totalAPagar}</div>
+                <div>
+                    <input placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)} /> <br />
+                    <input placeholder='Tel' value={tel} onChange={(e) => setTel(e.target.value)} /> <br />
+                    <input placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <br />
+                    <br />
+                    <input type="button" onClick={handleClickBuyButton} value="PAGAR" />
+                </div>
             </div>
-        </div>
+            )}
+        </>
     );
 }
 
