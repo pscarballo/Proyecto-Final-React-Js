@@ -1,23 +1,17 @@
-//@ts-check
-import React, { useState, useEffect, useContext } from 'react';
-// import { useEffect } from 'react';
-import { contextoGeneral } from './ContextContainer';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Item from './Item';
+import { contextoGeneral } from './ContextContainer';
 
 export default function ItemCount({ ini, max, producto }) {
   const [count, setCount] = useState(ini);
   const [removeButton, setRemoveButton] = useState(false);
   const { carrito, addItem } = useContext(contextoGeneral);
 
-
-
   function restar() {
     if (count >= 2) {
       setCount(count - 1);
     }
   }
-
 
   function sumar() {
     if (count < max) {
@@ -26,7 +20,7 @@ export default function ItemCount({ ini, max, producto }) {
   }
 
   function onAdd() {
-    //  alert(count + "a" + JSON.stringify(producto))
+   
     addItem(producto, count);
     setRemoveButton(true);
   }

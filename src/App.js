@@ -14,7 +14,7 @@ import Cart from './components/Cart';
 
 export default function App() {
   return (
-    
+
     <ContextContainer>
       <BrowserRouter>
 
@@ -26,10 +26,9 @@ export default function App() {
           <Route path="/item/:iditem" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
-          
+
         </Routes>
 
-        {/* <Footer /> */}
       </BrowserRouter>
     </ContextContainer>
   );

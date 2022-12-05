@@ -1,11 +1,9 @@
 
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import "./ItemListContainer";
-import { productosHC } from "./data.js";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import "./ItemListContainer";
 
 export default function ItemListContainer({ greeting }) {
   const { idcategory } = useParams();

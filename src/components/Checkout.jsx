@@ -1,9 +1,6 @@
-//@ts-check
-
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import React, { useContext, useState } from 'react';
 import { contextoGeneral } from './ContextContainer';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { clear } from '@testing-library/user-event/dist/clear';
 
 
 export default function Checkout() {

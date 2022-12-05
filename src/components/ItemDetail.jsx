@@ -1,23 +1,9 @@
-//@ts-check
-import React, { useContext, useEffect } from "react";
-import ItemCount from "./ItemCount";
-import { contextoGeneral } from '../components/ContextContainer';
 
-// // // // // // export default function ItemDetail({ producto }) {
-// // // // //   //  function addItem(x) {
-// // // // //   //    alert("quiere agregar " + x + " de este item: " + producto.name);
-// // // // //   //  }
+import React from "react";
+import ItemCount from "./ItemCount";
+
 export default function ItemDetail({ producto }) {
-  
-  // // // // // const { carrito, addItem } = useContext(contextoGeneral);
-  // // // // // // console.log(carrito);
-  // // // // // function onAdd(cant) {
-  // // // // //    alert("quiere agregar " + cant + " de este item: " + producto.name);
-  // // // // //   addItem(producto, cant);
-  // // // // // }
-  // // // // // useEffect(() => {
-  // // // // //   console.log(carrito);
-  // // // // // }, [carrito]);
+
   return (
     <div style={{ border: "2px solid violet", margin: "10px", display: "inline-block" }}>
       {producto.id ? (
@@ -29,21 +15,8 @@ export default function ItemDetail({ producto }) {
           <p>PRECIO: ${producto.precio}</p>
           <p>STOCK: {producto.stock}</p>
           <p style={{ width: "400px", height: "210px" }}>DESCRIPCION: {producto.descripcion}</p>
-          {/* IMG:{producto.imgUrl}
-          <br />
-          ID: {producto.id}
-          <br />
-          PRODUCTO: {producto.name}
-          <br />
-          CATEGORIA: {producto.category}
-          <br />
-          PRECIO: {producto.precio}
-          <br />
-          STOCK: {producto.stock}
-          <br /> */}
-          
 
-           <ItemCount ini={1} max={producto.stock} producto={producto}/*onAdd={onAdd}*/  /> 
+          <ItemCount ini={1} max={producto.stock} producto={producto} />
         </>
       ) : (
         <>Cargando...</>

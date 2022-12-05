@@ -1,13 +1,9 @@
-import React, { useState, createContext } from 'react';
-import { useContext } from 'react';
-import { useEffect } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const contextoGeneral = createContext();
 
 export default function ContextContainer({ children }) {
     const [carrito, setCarrito] = useState([]);
-    // const {carrito} = useContext (contextoGeneral);
-
     const [totalAPagar, setTotalAPagar] = useState(0);
     const [totalProductos, setTotalAProductos] = useState(0);
 
@@ -28,19 +24,13 @@ export default function ContextContainer({ children }) {
             carritoAux[pos] = { ...carritoAux[pos], quantity: carritoAux[pos].quantity + quantity };
             setCarrito(carritoAux);
         }
-    }
-    // useEffect(() => {
-    //      const total = carrito.reduce((acc, item) => acc + item.quantity * item.precio, 0)
-    //      setTotalAPagar(total)
+    };
 
-    //      console.log(total);
-        
-    //   }, [carrito]);
 
     function removeItem(id) {
         setCarrito(carrito.filter((product) => product.id !== id));
-    }
-    
+    };
+
 
     function clear() {
         setCarrito([]);
@@ -49,9 +39,8 @@ export default function ContextContainer({ children }) {
     useEffect(() => {
         setTotalAPagar(carrito.reduce((acc, item) => acc + item.quantity * item.precio, 0));
         setTotalAProductos(carrito.reduce((acc, item) => acc + item.quantity, 0));
-        // setTotalAPagar(total)
-        // console.log(total);
-        
+
+
     }, [carrito]);
 
 

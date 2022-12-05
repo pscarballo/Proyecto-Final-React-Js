@@ -1,8 +1,6 @@
-// import React from "react";
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { productosHC } from "./data";
 import ItemDetail from "./ItemDetail";
 
 export default function ItemDetailContainer({ greeting }) {
@@ -20,8 +18,6 @@ export default function ItemDetailContainer({ greeting }) {
     });
 
   }, [iditem]);
-
-
 
   return (
     <div style={{ border: "2px solid black", margin: "10px" }}>

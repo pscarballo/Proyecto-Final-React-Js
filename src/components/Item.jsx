@@ -15,7 +15,7 @@ export default function Item({ item }) {
       <p>PRECIO: ${item.precio}</p>
       <p>STOCK: {item.stock}</p>
       <p style={{width:"300px",height:"210px"}}>DESCRIPCION: {item.descripcion}</p>
-      {/* {JSON.stringify(item)} */}
+      
       <Link to={"/item/" + item.id}> Detalles</Link>
       <br />
       <br />
